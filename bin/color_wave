@@ -5,8 +5,8 @@ DEFAULT_LINES = 20
 DEFAULT_CYCLES = 3
 
 opts = Trollop::options do
-  opt :lines, "Wave height in lines", :default DEFAULT_LINES
-  opt :cycles, "Wave cycles to display", :default DEFAULT_CYCLES
+  opt :lines, "Wave height in lines", default: DEFAULT_LINES
+  opt :cycles, "Wave cycles to display", default: DEFAULT_CYCLES
 end
 Trollop::die :lines, "must be greater than zero" unless opts[:lines] > 0
 Trollop::die :cycles, "must be greater than zero" unless opts[:cycles] > 0
