@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
+require 'color_wave'
+require 'trollop'
 
 DEFAULT_LINES = 20
 DEFAULT_CYCLES = 3
