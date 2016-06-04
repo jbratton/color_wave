@@ -105,7 +105,7 @@ class ColorWave
 
   def scale_samples(wave_samples)
     wave_samples.map do |sample|
-      (sample * (lines / 2) + (lines / 2)).round
+      ((sample + 1) * (lines / 2)).round
     end
   end
 
