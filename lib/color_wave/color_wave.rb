@@ -39,6 +39,7 @@ class ColorWave
   end
 
   def run
+    self.shutdown = false
     prepare_screen
     loop.each_with_index do |_, pass|
       break if shutdown
