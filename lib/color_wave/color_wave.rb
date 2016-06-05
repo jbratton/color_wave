@@ -58,7 +58,7 @@ class ColorWave
   end
 
   def prepare_screen
-    cursor.hide
+    print cursor.hide
     print cursor.clear_screen
     lines.times { || puts }
     self.current_line = 0
@@ -66,7 +66,7 @@ class ColorWave
 
   def cleanup_screen
     print cursor.clear_screen
-    cursor.show
+    print cursor.show
   end
 
   def next_line
