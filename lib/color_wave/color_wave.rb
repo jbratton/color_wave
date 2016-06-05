@@ -83,6 +83,7 @@ class ColorWave
 
   def write_one_pass(pass)
     width.times do |step|
+      break if shutdown
       move_to_line next_line
       print Rainbow(next_char).color(next_color(pass, step))
       sleep sleep_time
