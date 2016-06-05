@@ -21,26 +21,29 @@ Or install it yourself as:
 
 You can run it from the command line with or without some options:
 
-    $ color_wave --lines 10 --cycles 2
+    $ color_wave --lines 20 --cycles 3 --speed 10.0
+
+The above values are the defaults.
+##### Options
+* `--lines` - the height of the wave in terminal lines
+* `--cycles` - how many cycles of the wave will be drawn
+* `--speed` - used as the divisor of the delay time between drawing loops; use higher values for faster redrawing
+* `--help` - show usage information
 
 You can use it in Ruby too:
 ```ruby
 require 'color_wave'
 
-ColorWave.new(lines: 10, cycles: 2, colors: %w( ff0000 00ff00 0000ff ), chars: %w( _ / ^ \ )).run
+ColorWave.new(lines: 10, cycles: 2, speed: 1, colors: %w( ff0000 00ff00 0000ff ), chars: %w( _ / ^ \ )).run
 ```
+
+The `speed` option is used as the divisor to a `BASE_SLEEP_TIME` constant so higher speeds will redraw the wave more quickly. The `colors` and `chars` options specify the colors and characters to be cycled through when drawing the wave.
 
 `Ctrl-C` will stop it once it's running.
 
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/jbratton/color_wave. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/jbratton/color_wave. This project is intended to be a safe, welcoming space for collaboration and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
