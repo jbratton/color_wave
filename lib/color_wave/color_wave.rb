@@ -8,6 +8,7 @@ class ColorWave
   DEFAULT_LINES = 20
   DEFAULT_CHARS = %w( O ).freeze
   DEFAULT_CYCLES = 3
+  DEFAULT_SPEED = 10.0
 
   # rainbow RGB values stolen from Term-Colormap on CPAN
   # https://metacpan.org/source/XXFELIXXX/Term-Colormap-0.06/lib/Term/Colormap.pm
@@ -19,18 +20,19 @@ class ColorWave
   ).freeze
 
   TWO_PI = Math::PI * 2
-  LOOP_SLEEP = 0.00001
+  BASE_SLEEP_TIME = 0.001
 
-  attr_reader :lines, :cycles, :chars, :colors
+  attr_reader :lines, :cycles, :chars, :colors, :speed
 
   def initialize(lines: DEFAULT_LINES, cycles: DEFAULT_CYCLES,
-                 chars: DEFAULT_CHARS, colors: DEFAULT_COLORS)
+                 chars: DEFAULT_CHARS, colors: DEFAULT_COLORS,
+                 speed: DEFAULT_SPEED)
     @lines = lines
     @cycles = cycles
     @chars = chars.cycle
     @colors = colors.cycle
+    @speed = speed
 
-    @sleep_time = LOOP_SLEEP
     @current_line = 0
     @shutdown = false
 
@@ -51,7 +53,7 @@ class ColorWave
 
   private
 
-  attr_accessor :current_line, :cycles, :shutdown, :sleep_time, :wave_rows
+  attr_accessor :current_line, :cycles, :shutdown, :wave_rows
 
   def width
     TermInfo.screen_width
@@ -88,6 +90,10 @@ class ColorWave
       print Rainbow(next_char).color(next_color(pass, step))
       sleep sleep_time
     end
+  end
+
+  def sleep_time
+    BASE_SLEEP_TIME / speed
   end
 
   def ready_next_pass
